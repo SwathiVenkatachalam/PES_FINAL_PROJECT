@@ -1,0 +1,3 @@
+../source/adc.c:39:6:init_ADC0	8	static
+../source/adc.c:79:6:adc_buffer	24	static
+../source/adc.c:108:6:adc_analysis	64	static

@@ -1,0 +1,4 @@
+../source/accelerometer.c:48:6:Delay	24	static
+../source/accelerometer.c:65:5:init_mma	8	static
+../source/accelerometer.c:81:6:read_full_xyz	32	static
+../source/accelerometer.c:116:7:convert_xyz_to_roll	40	static

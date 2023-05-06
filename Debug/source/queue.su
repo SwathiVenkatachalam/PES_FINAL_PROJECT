@@ -1,0 +1,5 @@
+../source/queue.c:48:6:cbfifo_create	24	static
+../source/queue.c:78:5:cbfifo_empty	16	static
+../source/queue.c:92:5:cbfifo_length	16	static
+../source/queue.c:109:5:cbfifo_enqueue	80	static
+../source/queue.c:214:5:cbfifo_dequeue	64	static

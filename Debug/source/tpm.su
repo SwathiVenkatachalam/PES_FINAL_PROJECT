@@ -1,0 +1,2 @@
+../source/tpm.c:32:6:init_TPM0	8	static
+../source/tpm.c:60:6:init_TPM1	8	static

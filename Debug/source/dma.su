@@ -1,0 +1,7 @@
+C:\Users\Swathi Venkatachalam\Documents\MCUXpressoIDE_11.6.0_8187\workspace\Musical-Notes-Player-SwathiVenkatachalam\CMSIS/core_cm0plus.h:745:22:NVIC_EnableIRQ	16	static
+C:\Users\Swathi Venkatachalam\Documents\MCUXpressoIDE_11.6.0_8187\workspace\Musical-Notes-Player-SwathiVenkatachalam\CMSIS/core_cm0plus.h:791:22:NVIC_ClearPendingIRQ	16	static
+C:\Users\Swathi Venkatachalam\Documents\MCUXpressoIDE_11.6.0_8187\workspace\Musical-Notes-Player-SwathiVenkatachalam\CMSIS/core_cm0plus.h:804:22:NVIC_SetPriority	24	static
+../source/dma.c:40:6:init_DMA0	8	static
+../source/dma.c:77:6:copy_dma_dacbuffer	24	static
+../source/dma.c:97:6:start_dma_transfer	8	static
+../source/dma.c:123:6:DMA0_IRQHandler	8	static

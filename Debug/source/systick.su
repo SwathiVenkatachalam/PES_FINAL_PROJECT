@@ -1,0 +1,6 @@
+C:\Users\Swathi Venkatachalam\Documents\MCUXpressoIDE_11.6.0_8187\workspace\Musical-Notes-Player-SwathiVenkatachalam\CMSIS/core_cm0plus.h:804:22:NVIC_SetPriority	24	static
+../source/systick.c:34:6:init_systicktimer	8	static
+../source/systick.c:53:6:SysTick_Handler	8	static
+../source/systick.c:68:12:now	8	static
+../source/systick.c:83:6:reset_timer	8	static
+../source/systick.c:99:12:get_timer	8	static

@@ -1,0 +1,6 @@
+../source/musical_tones.c:33:6:init_all	8	static
+../source/musical_tones.c:56:6:play_tune1	24	static
+../source/musical_tones.c:99:6:play_tune2	24	static
+../source/musical_tones.c:142:6:play_tune3	24	static
+../source/musical_tones.c:186:6:play_tune4	24	static
+../source/musical_tones.c:228:6:play_tunes	16	static

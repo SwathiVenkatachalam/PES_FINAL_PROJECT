@@ -1,0 +1,7 @@
+../source/commandprocessor.c:36:6:author	8	static
+../source/commandprocessor.c:50:6:cbfifo_test	8	static
+../source/commandprocessor.c:64:6:systick_test	8	static
+../source/commandprocessor.c:79:6:sinewave_test	8	static
+../source/commandprocessor.c:92:6:display	16	static
+../source/commandprocessor.c:132:6:terminate	8	static
+../source/commandprocessor.c:149:6:help	8	static
