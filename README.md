@@ -1,12 +1,12 @@
-[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-24ddc0f5d75046c5622901739e7c5dd533143b0c8e959d652212380cedb1ea36.svg)](https://classroom.github.com/a/o8qShciV)
-[![Open in Visual Studio Code](https://classroom.github.com/assets/open-in-vscode-718a45dd9cf7e7f842a935f5ebbe5719a5e09af4491e668f4dbf3b35d5cca122.svg)](https://classroom.github.com/online_ide?assignment_repo_id=11044287&assignment_repo_type=AssignmentRepo)
-# Description: 
+# PES Final Project
+# Musical Notes Player based on-board MMA8451Q Accelerometer over I2C
+
 Enter your conde description and any other information about your implementation.
-## Reviewer:
-Name of the reviewer
-## Review Date:
+### Author:
+Swathi Venkatachalam
+### Review Date:
 Date reviewed
-## Review Comments:
+### Review Comments:
 1. Comment:
     - Response: 
 2. Comment:
