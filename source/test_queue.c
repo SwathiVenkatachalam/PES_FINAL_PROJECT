@@ -52,7 +52,6 @@ int test_cbfifo()
 	enqbytes = cbfifo_enqueue(value0, strlen(value0)+3, &RX);
 	if(enqbytes == expenqbytes)
 		success++;
-	printf("Success = %d\n\r", success);
 	//6 Combination of enqueuing and dequeuing
 	expenqbytes = 20;
 	expdeqbytes = 20;
