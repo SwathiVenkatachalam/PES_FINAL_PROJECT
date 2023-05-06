@@ -1,15 +1,19 @@
-source/main.o source/main.d: ../source/main.c \
- C:\Users\Swathi\ Venkatachalam\Documents\MCUXpressoIDE_11.6.0_8187\workspace\Musical-Notes-Player-SwathiVenkatachalam\source/musical_tones.h \
- C:\Users\Swathi\ Venkatachalam\Documents\MCUXpressoIDE_11.6.0_8187\workspace\Musical-Notes-Player-SwathiVenkatachalam\board/board.h \
- C:\Users\Swathi\ Venkatachalam\Documents\MCUXpressoIDE_11.6.0_8187\workspace\Musical-Notes-Player-SwathiVenkatachalam\board/clock_config.h \
- C:\Users\Swathi\ Venkatachalam\Documents\MCUXpressoIDE_11.6.0_8187\workspace\Musical-Notes-Player-SwathiVenkatachalam\drivers/fsl_common.h \
- C:\Users\Swathi\ Venkatachalam\Documents\MCUXpressoIDE_11.6.0_8187\workspace\Musical-Notes-Player-SwathiVenkatachalam\CMSIS/fsl_device_registers.h \
- C:\Users\Swathi\ Venkatachalam\Documents\MCUXpressoIDE_11.6.0_8187\workspace\Musical-Notes-Player-SwathiVenkatachalam\CMSIS/MKL25Z4.h \
+source/main.o source/main.d: ../source/main.c ../source/sysclock.h \
+ ../source/uart.h \
+ C:\Users\Swathi\ Venkatachalam\Documents\MCUXpressoIDE_11.6.0_8187\workspace\Musical-Notes-Player-SwathiVenkatachalam\CMSIS/MKL25Z4.H \
  C:\Users\Swathi\ Venkatachalam\Documents\MCUXpressoIDE_11.6.0_8187\workspace\Musical-Notes-Player-SwathiVenkatachalam\CMSIS/core_cm0plus.h \
  C:\Users\Swathi\ Venkatachalam\Documents\MCUXpressoIDE_11.6.0_8187\workspace\Musical-Notes-Player-SwathiVenkatachalam\CMSIS/core_cmInstr.h \
  C:\Users\Swathi\ Venkatachalam\Documents\MCUXpressoIDE_11.6.0_8187\workspace\Musical-Notes-Player-SwathiVenkatachalam\CMSIS/cmsis_gcc.h \
  C:\Users\Swathi\ Venkatachalam\Documents\MCUXpressoIDE_11.6.0_8187\workspace\Musical-Notes-Player-SwathiVenkatachalam\CMSIS/core_cmFunc.h \
  C:\Users\Swathi\ Venkatachalam\Documents\MCUXpressoIDE_11.6.0_8187\workspace\Musical-Notes-Player-SwathiVenkatachalam\CMSIS/system_MKL25Z4.h \
+ ../source/queue.h ../source/commandhandler.h \
+ ../source/commandprocessor.h ../source/i2c.h ../source/accelerometer.h \
+ ../source/musical_tones.h \
+ C:\Users\Swathi\ Venkatachalam\Documents\MCUXpressoIDE_11.6.0_8187\workspace\Musical-Notes-Player-SwathiVenkatachalam\board/board.h \
+ C:\Users\Swathi\ Venkatachalam\Documents\MCUXpressoIDE_11.6.0_8187\workspace\Musical-Notes-Player-SwathiVenkatachalam\board/clock_config.h \
+ C:\Users\Swathi\ Venkatachalam\Documents\MCUXpressoIDE_11.6.0_8187\workspace\Musical-Notes-Player-SwathiVenkatachalam\drivers/fsl_common.h \
+ C:\Users\Swathi\ Venkatachalam\Documents\MCUXpressoIDE_11.6.0_8187\workspace\Musical-Notes-Player-SwathiVenkatachalam\CMSIS/fsl_device_registers.h \
+ C:\Users\Swathi\ Venkatachalam\Documents\MCUXpressoIDE_11.6.0_8187\workspace\Musical-Notes-Player-SwathiVenkatachalam\CMSIS/MKL25Z4.h \
  C:\Users\Swathi\ Venkatachalam\Documents\MCUXpressoIDE_11.6.0_8187\workspace\Musical-Notes-Player-SwathiVenkatachalam\CMSIS/MKL25Z4_features.h \
  C:\Users\Swathi\ Venkatachalam\Documents\MCUXpressoIDE_11.6.0_8187\workspace\Musical-Notes-Player-SwathiVenkatachalam\drivers/fsl_clock.h \
  C:\Users\Swathi\ Venkatachalam\Documents\MCUXpressoIDE_11.6.0_8187\workspace\Musical-Notes-Player-SwathiVenkatachalam\drivers/fsl_common.h \
@@ -19,29 +23,28 @@ source/main.o source/main.d: ../source/main.c \
  C:\Users\Swathi\ Venkatachalam\Documents\MCUXpressoIDE_11.6.0_8187\workspace\Musical-Notes-Player-SwathiVenkatachalam\board/clock_config.h \
  C:\Users\Swathi\ Venkatachalam\Documents\MCUXpressoIDE_11.6.0_8187\workspace\Musical-Notes-Player-SwathiVenkatachalam\CMSIS/MKL25Z4.h \
  C:\Users\Swathi\ Venkatachalam\Documents\MCUXpressoIDE_11.6.0_8187\workspace\Musical-Notes-Player-SwathiVenkatachalam\utilities/fsl_debug_console.h \
- C:\Users\Swathi\ Venkatachalam\Documents\MCUXpressoIDE_11.6.0_8187\workspace\Musical-Notes-Player-SwathiVenkatachalam\source/systick.h \
- C:\Users\Swathi\ Venkatachalam\Documents\MCUXpressoIDE_11.6.0_8187\workspace\Musical-Notes-Player-SwathiVenkatachalam\source/dac.h \
- C:\Users\Swathi\ Venkatachalam\Documents\MCUXpressoIDE_11.6.0_8187\workspace\Musical-Notes-Player-SwathiVenkatachalam\source/adc.h \
- C:\Users\Swathi\ Venkatachalam\Documents\MCUXpressoIDE_11.6.0_8187\workspace\Musical-Notes-Player-SwathiVenkatachalam\source/tone_to_sample.h \
- C:\Users\Swathi\ Venkatachalam\Documents\MCUXpressoIDE_11.6.0_8187\workspace\Musical-Notes-Player-SwathiVenkatachalam\source/tpm.h \
- C:\Users\Swathi\ Venkatachalam\Documents\MCUXpressoIDE_11.6.0_8187\workspace\Musical-Notes-Player-SwathiVenkatachalam\source/dma.h \
- C:\Users\Swathi\ Venkatachalam\Documents\MCUXpressoIDE_11.6.0_8187\workspace\Musical-Notes-Player-SwathiVenkatachalam\source/test_sine.h \
- ../source/sysclock.h ../source/uart.h \
- C:\Users\Swathi\ Venkatachalam\Documents\MCUXpressoIDE_11.6.0_8187\workspace\Musical-Notes-Player-SwathiVenkatachalam\CMSIS/MKL25Z4.H \
- ../source/queue.h ../source/commandhandler.h \
- ../source/commandprocessor.h ../source/i2c.h ../source/accelerometer.h \
- ../source/musical_tones.h ../source/led.h
-C:\Users\Swathi\ Venkatachalam\Documents\MCUXpressoIDE_11.6.0_8187\workspace\Musical-Notes-Player-SwathiVenkatachalam\source/musical_tones.h:
-C:\Users\Swathi\ Venkatachalam\Documents\MCUXpressoIDE_11.6.0_8187\workspace\Musical-Notes-Player-SwathiVenkatachalam\board/board.h:
-C:\Users\Swathi\ Venkatachalam\Documents\MCUXpressoIDE_11.6.0_8187\workspace\Musical-Notes-Player-SwathiVenkatachalam\board/clock_config.h:
-C:\Users\Swathi\ Venkatachalam\Documents\MCUXpressoIDE_11.6.0_8187\workspace\Musical-Notes-Player-SwathiVenkatachalam\drivers/fsl_common.h:
-C:\Users\Swathi\ Venkatachalam\Documents\MCUXpressoIDE_11.6.0_8187\workspace\Musical-Notes-Player-SwathiVenkatachalam\CMSIS/fsl_device_registers.h:
-C:\Users\Swathi\ Venkatachalam\Documents\MCUXpressoIDE_11.6.0_8187\workspace\Musical-Notes-Player-SwathiVenkatachalam\CMSIS/MKL25Z4.h:
+ ../source/systick.h ../source/dac.h ../source/adc.h \
+ ../source/tone_to_sample.h ../source/tpm.h ../source/dma.h \
+ ../source/test_sine.h ../source/led.h
+../source/sysclock.h:
+../source/uart.h:
+C:\Users\Swathi\ Venkatachalam\Documents\MCUXpressoIDE_11.6.0_8187\workspace\Musical-Notes-Player-SwathiVenkatachalam\CMSIS/MKL25Z4.H:
 C:\Users\Swathi\ Venkatachalam\Documents\MCUXpressoIDE_11.6.0_8187\workspace\Musical-Notes-Player-SwathiVenkatachalam\CMSIS/core_cm0plus.h:
 C:\Users\Swathi\ Venkatachalam\Documents\MCUXpressoIDE_11.6.0_8187\workspace\Musical-Notes-Player-SwathiVenkatachalam\CMSIS/core_cmInstr.h:
 C:\Users\Swathi\ Venkatachalam\Documents\MCUXpressoIDE_11.6.0_8187\workspace\Musical-Notes-Player-SwathiVenkatachalam\CMSIS/cmsis_gcc.h:
 C:\Users\Swathi\ Venkatachalam\Documents\MCUXpressoIDE_11.6.0_8187\workspace\Musical-Notes-Player-SwathiVenkatachalam\CMSIS/core_cmFunc.h:
 C:\Users\Swathi\ Venkatachalam\Documents\MCUXpressoIDE_11.6.0_8187\workspace\Musical-Notes-Player-SwathiVenkatachalam\CMSIS/system_MKL25Z4.h:
+../source/queue.h:
+../source/commandhandler.h:
+../source/commandprocessor.h:
+../source/i2c.h:
+../source/accelerometer.h:
+../source/musical_tones.h:
+C:\Users\Swathi\ Venkatachalam\Documents\MCUXpressoIDE_11.6.0_8187\workspace\Musical-Notes-Player-SwathiVenkatachalam\board/board.h:
+C:\Users\Swathi\ Venkatachalam\Documents\MCUXpressoIDE_11.6.0_8187\workspace\Musical-Notes-Player-SwathiVenkatachalam\board/clock_config.h:
+C:\Users\Swathi\ Venkatachalam\Documents\MCUXpressoIDE_11.6.0_8187\workspace\Musical-Notes-Player-SwathiVenkatachalam\drivers/fsl_common.h:
+C:\Users\Swathi\ Venkatachalam\Documents\MCUXpressoIDE_11.6.0_8187\workspace\Musical-Notes-Player-SwathiVenkatachalam\CMSIS/fsl_device_registers.h:
+C:\Users\Swathi\ Venkatachalam\Documents\MCUXpressoIDE_11.6.0_8187\workspace\Musical-Notes-Player-SwathiVenkatachalam\CMSIS/MKL25Z4.h:
 C:\Users\Swathi\ Venkatachalam\Documents\MCUXpressoIDE_11.6.0_8187\workspace\Musical-Notes-Player-SwathiVenkatachalam\CMSIS/MKL25Z4_features.h:
 C:\Users\Swathi\ Venkatachalam\Documents\MCUXpressoIDE_11.6.0_8187\workspace\Musical-Notes-Player-SwathiVenkatachalam\drivers/fsl_clock.h:
 C:\Users\Swathi\ Venkatachalam\Documents\MCUXpressoIDE_11.6.0_8187\workspace\Musical-Notes-Player-SwathiVenkatachalam\drivers/fsl_common.h:
@@ -51,20 +54,11 @@ C:\Users\Swathi\ Venkatachalam\Documents\MCUXpressoIDE_11.6.0_8187\workspace\Mus
 C:\Users\Swathi\ Venkatachalam\Documents\MCUXpressoIDE_11.6.0_8187\workspace\Musical-Notes-Player-SwathiVenkatachalam\board/clock_config.h:
 C:\Users\Swathi\ Venkatachalam\Documents\MCUXpressoIDE_11.6.0_8187\workspace\Musical-Notes-Player-SwathiVenkatachalam\CMSIS/MKL25Z4.h:
 C:\Users\Swathi\ Venkatachalam\Documents\MCUXpressoIDE_11.6.0_8187\workspace\Musical-Notes-Player-SwathiVenkatachalam\utilities/fsl_debug_console.h:
-C:\Users\Swathi\ Venkatachalam\Documents\MCUXpressoIDE_11.6.0_8187\workspace\Musical-Notes-Player-SwathiVenkatachalam\source/systick.h:
-C:\Users\Swathi\ Venkatachalam\Documents\MCUXpressoIDE_11.6.0_8187\workspace\Musical-Notes-Player-SwathiVenkatachalam\source/dac.h:
-C:\Users\Swathi\ Venkatachalam\Documents\MCUXpressoIDE_11.6.0_8187\workspace\Musical-Notes-Player-SwathiVenkatachalam\source/adc.h:
-C:\Users\Swathi\ Venkatachalam\Documents\MCUXpressoIDE_11.6.0_8187\workspace\Musical-Notes-Player-SwathiVenkatachalam\source/tone_to_sample.h:
-C:\Users\Swathi\ Venkatachalam\Documents\MCUXpressoIDE_11.6.0_8187\workspace\Musical-Notes-Player-SwathiVenkatachalam\source/tpm.h:
-C:\Users\Swathi\ Venkatachalam\Documents\MCUXpressoIDE_11.6.0_8187\workspace\Musical-Notes-Player-SwathiVenkatachalam\source/dma.h:
-C:\Users\Swathi\ Venkatachalam\Documents\MCUXpressoIDE_11.6.0_8187\workspace\Musical-Notes-Player-SwathiVenkatachalam\source/test_sine.h:
-../source/sysclock.h:
-../source/uart.h:
-C:\Users\Swathi\ Venkatachalam\Documents\MCUXpressoIDE_11.6.0_8187\workspace\Musical-Notes-Player-SwathiVenkatachalam\CMSIS/MKL25Z4.H:
-../source/queue.h:
-../source/commandhandler.h:
-../source/commandprocessor.h:
-../source/i2c.h:
-../source/accelerometer.h:
-../source/musical_tones.h:
+../source/systick.h:
+../source/dac.h:
+../source/adc.h:
+../source/tone_to_sample.h:
+../source/tpm.h:
+../source/dma.h:
+../source/test_sine.h:
 ../source/led.h:

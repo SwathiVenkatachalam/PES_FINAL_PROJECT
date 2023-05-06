@@ -22,7 +22,7 @@ source/commandprocessor.o source/commandprocessor.d: \
  C:\Users\Swathi\ Venkatachalam\Documents\MCUXpressoIDE_11.6.0_8187\workspace\Musical-Notes-Player-SwathiVenkatachalam\utilities/fsl_debug_console.h \
  ../source/systick.h ../source/dac.h ../source/adc.h \
  ../source/tone_to_sample.h ../source/tpm.h ../source/dma.h \
- ../source/test_sine.h
+ ../source/test_sine.h ../source/test_queue.h
 ../source/commandprocessor.h:
 C:\Users\Swathi\ Venkatachalam\Documents\MCUXpressoIDE_11.6.0_8187\workspace\Musical-Notes-Player-SwathiVenkatachalam\CMSIS/MKL25Z4.h:
 C:\Users\Swathi\ Venkatachalam\Documents\MCUXpressoIDE_11.6.0_8187\workspace\Musical-Notes-Player-SwathiVenkatachalam\CMSIS/core_cm0plus.h:
@@ -53,3 +53,4 @@ C:\Users\Swathi\ Venkatachalam\Documents\MCUXpressoIDE_11.6.0_8187\workspace\Mus
 ../source/tpm.h:
 ../source/dma.h:
 ../source/test_sine.h:
+../source/test_queue.h:

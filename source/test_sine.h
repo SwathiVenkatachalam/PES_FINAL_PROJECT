@@ -8,6 +8,6 @@
 #ifndef TEST_SINE_H_
 #define TEST_SINE_H_
 
-void test_sin();
+int test_sin();
 
 #endif /* TEST_SINE_H_ */

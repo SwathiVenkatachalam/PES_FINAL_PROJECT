@@ -23,7 +23,7 @@
  *
  * Ensure that max_err is <= 2.0 and sum_sq error is <= 12000.
  */
-void test_sin()
+int test_sin()
 {
   double act_sin;
   double exp_sin;
@@ -47,9 +47,11 @@ void test_sin()
   if (max_err > 2.0 || sum_sq > 12000)
   {
 	  printf("Error: Do not proceed. Your sine function needs work\n\r");
+	  return 0;
   }
   else
   {
-	  printf("Pass: Your sine function meets the accuracy criteria\n\r");
+	  //Pass: Your sine function meets the accuracy criteria
+	  return 1;
   }
 }

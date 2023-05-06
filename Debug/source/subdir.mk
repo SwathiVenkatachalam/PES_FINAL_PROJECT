@@ -21,6 +21,7 @@ C_SRCS += \
 ../source/semihost_hardfault.c \
 ../source/sysclock.c \
 ../source/systick.c \
+../source/test_queue.c \
 ../source/test_sine.c \
 ../source/tone_to_sample.c \
 ../source/tpm.c \
@@ -44,6 +45,7 @@ C_DEPS += \
 ./source/semihost_hardfault.d \
 ./source/sysclock.d \
 ./source/systick.d \
+./source/test_queue.d \
 ./source/test_sine.d \
 ./source/tone_to_sample.d \
 ./source/tpm.d \
@@ -67,6 +69,7 @@ OBJS += \
 ./source/semihost_hardfault.o \
 ./source/sysclock.o \
 ./source/systick.o \
+./source/test_queue.o \
 ./source/test_sine.o \
 ./source/tone_to_sample.o \
 ./source/tpm.o \
@@ -85,7 +88,7 @@ source/%.o: ../source/%.c source/subdir.mk
 clean: clean-source
 
 clean-source:
-	-$(RM) ./source/accelerometer.d ./source/accelerometer.o ./source/adc.d ./source/adc.o ./source/adc_calibrate.d ./source/adc_calibrate.o ./source/autocorrelate.d ./source/autocorrelate.o ./source/commandhandler.d ./source/commandhandler.o ./source/commandprocessor.d ./source/commandprocessor.o ./source/dac.d ./source/dac.o ./source/dma.d ./source/dma.o ./source/i2c.d ./source/i2c.o ./source/led.d ./source/led.o ./source/main.d ./source/main.o ./source/mtb.d ./source/mtb.o ./source/musical_tones.d ./source/musical_tones.o ./source/queue.d ./source/queue.o ./source/semihost_hardfault.d ./source/semihost_hardfault.o ./source/sysclock.d ./source/sysclock.o ./source/systick.d ./source/systick.o ./source/test_sine.d ./source/test_sine.o ./source/tone_to_sample.d ./source/tone_to_sample.o ./source/tpm.d ./source/tpm.o ./source/uart.d ./source/uart.o
+	-$(RM) ./source/accelerometer.d ./source/accelerometer.o ./source/adc.d ./source/adc.o ./source/adc_calibrate.d ./source/adc_calibrate.o ./source/autocorrelate.d ./source/autocorrelate.o ./source/commandhandler.d ./source/commandhandler.o ./source/commandprocessor.d ./source/commandprocessor.o ./source/dac.d ./source/dac.o ./source/dma.d ./source/dma.o ./source/i2c.d ./source/i2c.o ./source/led.d ./source/led.o ./source/main.d ./source/main.o ./source/mtb.d ./source/mtb.o ./source/musical_tones.d ./source/musical_tones.o ./source/queue.d ./source/queue.o ./source/semihost_hardfault.d ./source/semihost_hardfault.o ./source/sysclock.d ./source/sysclock.o ./source/systick.d ./source/systick.o ./source/test_queue.d ./source/test_queue.o ./source/test_sine.d ./source/test_sine.o ./source/tone_to_sample.d ./source/tone_to_sample.o ./source/tpm.d ./source/tpm.o ./source/uart.d ./source/uart.o
 
 .PHONY: clean-source
 

@@ -21,6 +21,8 @@
 
 #include "led.h"
 #include "musical_tones.h"
+#include "test_queue.h"
+#include "test_sine.h"
 
 int commandprocessor_stop = 0;
 
@@ -49,7 +51,11 @@ void author()
  */
 void cbfifo_test()
 {
-	printf("\n\rPass: All cbfifo test cases have passed!\n\r");
+	int success = test_cbfifo();
+	if (success == 1)
+		printf("\n\rPass: All cbfifo test cases have passed!\n\r");
+	else
+		printf("\n\rFail: All cbfifo test cases have not passed!\n\r");
 }
 
 /*
@@ -64,7 +70,13 @@ void cbfifo_test()
 void systick_test()
 {
 	//testing if 1 second has passed
-	printf("\n\rPass: Systick Timer test has passed!\n\r");
+	printf("\r\nTesting if systick timer crosses 1 second");
+	reset_timer();
+	while(get_timer()<16); //Wait for 1 second to elapse
+	if (get_timer()*63.5>=1000) //Check if time is greater or equal to 1 sec
+		printf("\n\rPass: Systick Timer test has passed!\n\r");
+	else
+		printf("\n\rFail: Systick Timer test has passed!\n\r");
 }
 
 /*
@@ -78,7 +90,12 @@ void systick_test()
  */
 void sinewave_test()
 {
-	printf("\n\rPass: Sine wave accuracy test passed!\n\r");
+	int success = test_sin();
+	if (success == 1)
+		printf("\n\rPass: Sine wave accuracy test passed!\n\r");
+	else
+		printf("\n\rFail: Sine wave accuracy test failed!\n\r");
+
 }
 /*
  * @name   display

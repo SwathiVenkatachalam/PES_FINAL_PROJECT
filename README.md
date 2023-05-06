@@ -1,19 +1,3 @@
-# PES Final Project
-# Musical Notes Player based on-board MMA8451Q Accelerometer over I2C
-
-Enter your conde description and any other information about your implementation.
-### Author:
-Swathi Venkatachalam
-### Review Date:
-Date reviewed
-### Review Comments:
-1. Comment:
-    - Response: 
-2. Comment:
-    - Response:
-3. Comment:
-    - Response:
-4. Comment:
-    - Response:
-5. Comment:
-    - Response:
+[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-24ddc0f5d75046c5622901739e7c5dd533143b0c8e959d652212380cedb1ea36.svg)](https://classroom.github.com/a/eaoC82lc)
+[![Open in Visual Studio Code](https://classroom.github.com/assets/open-in-vscode-718a45dd9cf7e7f842a935f5ebbe5719a5e09af4491e668f4dbf3b35d5cca122.svg)](https://classroom.github.com/online_ide?assignment_repo_id=10833990&assignment_repo_type=AssignmentRepo)
+# Assignment-7-Waveforms
