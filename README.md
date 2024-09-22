@@ -2,7 +2,7 @@
 ## Musical Notes Player based on-board MMA8451Q Accelerometer over I2C
 
 ### Project source code: <br/>
-https://github.com/ECEN5813/final-project-SwathiVenkatachalam/tree/main/source <br/>
+[https://github.com/ECEN5813/final-project-SwathiVenkatachalam/tree/main/source](https://github.com/SwathiVenkatachalam/PES_FINAL_PROJECT/tree/main/source) <br/>
 
 ### Project proposal: <br/>
 https://github.com/ECEN5813/final-project-SwathiVenkatachalam/blob/main/Documents/PES_Project_Proposal.pdf <br/>
