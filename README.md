@@ -5,10 +5,10 @@
 [https://github.com/ECEN5813/final-project-SwathiVenkatachalam/tree/main/source](https://github.com/SwathiVenkatachalam/PES_FINAL_PROJECT/tree/main/source) <br/>
 
 ### Project proposal: <br/>
-https://github.com/ECEN5813/final-project-SwathiVenkatachalam/blob/main/Documents/PES_Project_Proposal.pdf <br/>
+[https://github.com/ECEN5813/final-project-SwathiVenkatachalam/blob/main/Documents/PES_Project_Proposal.pdf](https://github.com/SwathiVenkatachalam/PES_FINAL_PROJECT/blob/main/Documents/PES_Project_Proposal.pdf) <br/>
 
 ### Project test plan and final report: <br/>
-https://github.com/ECEN5813/final-project-SwathiVenkatachalam/blob/main/Documents/Test%20Plan_Final%20Report.pdf <br/>
+[https://github.com/ECEN5813/final-project-SwathiVenkatachalam/blob/main/Documents/Test%20Plan_Final%20Report.pdf](https://github.com/SwathiVenkatachalam/PES_FINAL_PROJECT/blob/main/Documents/Test%20Plan_Final%20Report.pdf) <br/>
 
 ### Project Demo Video:  <br/>
 https://drive.google.com/file/d/1FRDMXOhVGObR3DemkXkreL1L0wENK2KZ/view?usp=sharing <br/>
