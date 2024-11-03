@@ -16,30 +16,21 @@
 #define Q_MAX_SIZE (256) //Assuming maximum number of nodes don't exceed 256 in fifo
 
 
-//Structure defined for transmit and receive buffer
+//Structure defined for transmit and receive buffer, need 2 buffers
 typedef struct{
 	int front;
 	int rear;
-	int length;
+	int length; //no of elements in use
 	char qdata[Q_MAX_SIZE];
 }Q_T;
-
-/*
- * Initializes the FIFO
- *
- * Parameters:
- *	 *q       The buffer which needs to be enqueued (TxQ or RxQ)
- *
- * Returns: None
- */
 
 /*
  * @name   cbfifo_create
  * @brief  Creates queue
  *
- * Creates queue
+ * Creates queue, init FIFO
  *
- * @param  Q_T * q
+ * @param  Q_T * q : The buffer which needs to be enqueued (TxQ or RxQ)
  * @return none
  */
 void cbfifo_create(Q_T * q);
