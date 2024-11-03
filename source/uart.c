@@ -22,6 +22,7 @@ Q_T TxQ, RxQ; //Transmit and receive queues
  * @param  uint32_t baud_rate
  * @return none
  */
+//configure UART0 to communicate with the OpenSDA debug	MCU
 void uart_init(uint32_t baud_rate)
 {
 	uint16_t sbr;
@@ -30,7 +31,7 @@ void uart_init(uint32_t baud_rate)
 	SIM->SCGC4 |= SIM_SCGC4_UART0_MASK;
 	SIM->SCGC5 |= SIM_SCGC5_PORTA_MASK;
 
-	//Transmitter and receiver are disabled before init
+	//Disables UART	receiver and transmitter to allow access to control registers. 
 	UART0->C2 &= ~UART0_C2_TE_MASK & ~UART0_C2_RE_MASK;
 
 	//UART clock set to 48 MHz clock
@@ -48,27 +49,27 @@ void uart_init(uint32_t baud_rate)
 	UART0->C4 |= UART0_C4_OSR(UART_OVERSAMPLE_RATE-1);
 
 	//Interrupts for RX active edge and LIN break detect set, one stop bit selected
-	UART0->BDH |= UART0_BDH_RXEDGIE(0)      |
-			      UART0_BDH_SBNS(STOP_BITS) |
-				  UART0_BDH_LBKDIE(0);
+	UART0->BDH |= UART0_BDH_RXEDGIE(0) |
+		      UART0_BDH_SBNS(STOP_BITS) |
+		      UART0_BDH_LBKDIE(0);
 
-	//Don't enable loopback mode, use 8 data bit mode, don't use parity
+	//Don't enable loopback mode, use data bit mode, parity
 	UART0->C1 = UART0_C1_LOOPS(0)     |
-			    UART0_C1_M(DATA_SIZE) |
-				UART0_C1_PE(PARITY)   |
-				UART0_C1_PT(EVEN);
+		    UART0_C1_M(DATA_SIZE) |
+		    UART0_C1_PE(PARITY)   |
+		    UART0_C1_PT(EVEN);
 	//Don't invert transmit data, don't enable interrupts for errors
 	UART0->C3 = UART0_C3_TXINV(0) |
-			    UART0_C3_ORIE(0)  |
-				UART0_C3_NEIE(0)  |
-				UART0_C3_FEIE(0)  |
-				UART0_C3_PEIE(0);
+		    UART0_C3_ORIE(0)  |
+		    UART0_C3_NEIE(0)  |
+		    UART0_C3_FEIE(0)  |
+		    UART0_C3_PEIE(0);
 
 	//Clear error flags
 	UART0->S1 = UART0_S1_OR(1) |
-			    UART0_S1_NF(1) |
-				UART0_S1_FE(1) |
-				UART0_S1_PF(1);
+		    UART0_S1_NF(1) |
+		    UART0_S1_FE(1) |
+		    UART0_S1_PF(1);
 
 	//Send LSB first, do not invert received data
 	UART0->S2 = UART0_S2_MSBF(0) | UART0_S2_RXINV(0);
@@ -87,7 +88,7 @@ void uart_init(uint32_t baud_rate)
 	//Clear the UART RDRF flag
 	UART0->S1 &= ~UART0_S1_RDRF_MASK;
 
-	//Initialize llfifo transmit and receive queues
+	//Initialize cbfifo transmit and receive queues
 	cbfifo_create(&RxQ);
 	cbfifo_create(&TxQ);
 }
@@ -107,24 +108,24 @@ void UART0_IRQHandler(void)
 
 	//If interrupt due to error flags
 	if (UART0->S1 & (UART_S1_OR_MASK |
-			         UART_S1_NF_MASK |
-			         UART_S1_FE_MASK |
-					 UART_S1_PF_MASK))
+			 UART_S1_NF_MASK |
+			 UART_S1_FE_MASK |
+			 UART_S1_PF_MASK))
 	{
 		// clear the error flags
 		UART0->S1 |= UART0_S1_OR_MASK |
-				     UART0_S1_NF_MASK |
-				     UART0_S1_FE_MASK |
-					 UART0_S1_PF_MASK;
+			     UART0_S1_NF_MASK |
+			     UART0_S1_FE_MASK |
+			     UART0_S1_PF_MASK;
 		// read the data register to clear RDRF
 		ch = UART0->D;
 	}
 
-	//If interrupt due to receiving a character
+	//If interrupt due to receiving a character; receive data register full (RDRF) flag is set
 	if (UART0->S1 & UART0_S1_RDRF_MASK)
 	{
-		ch = UART0->D; //received a character
-		UART0->D = ch; //Echo character
+		ch = UART0->D; //received a character from the D register
+		UART0->D = ch; // The character is immediately sent back (echoed) by writing it back to the D register.
 
 		//Enqueue a byte successfully in read buffer and check if it enqueued
 		if(cbfifo_enqueue(&ch, 1, &RxQ) == 1)
@@ -139,9 +140,9 @@ void UART0_IRQHandler(void)
 
 	//If interrupt due to transmitting a character
 	if ((UART0->C2 & UART0_C2_TIE_MASK) && // transmitter interrupt enabled
-		(UART0->S1 & UART0_S1_TDRE_MASK))
+	    (UART0->S1 & UART0_S1_TDRE_MASK))  // if the transmit data register empty (TDRE) flag is set.
 	{
-		// If transmit buffer empty
+		// If transmit buffer not empty
 		if (!cbfifo_empty(&TxQ))
 		{
 			cbfifo_dequeue(&ch, 1, &TxQ); //Dequeue the transmit buffer
@@ -166,17 +167,20 @@ void UART0_IRQHandler(void)
  *         int size (bytes of data to be transmitted)
  * @return int 0 on success and -1 on failure
  */
-int __sys_write(int handle, char *buf, int size)
+int __sys_write(int handle, char *buf, int size) //function enables sending data over UART, managing the transmit buffer.
 {
-	if(size <= 0 || buf == NULL)
+	if(size <= 0 || buf == NULL) //checks if the size is valid and if the buffer is not null; i/p validation
 		return ERROR;
 
+	// It waits until there is enough space in the transmit buffer.
 	while(size > (Q_MAX_SIZE - cbfifo_length(&TxQ))); // wait for space to open up
 
+	//The data from the buffer is enqueued into the transmit queue. If it fails, it returns an error.
 	if(cbfifo_enqueue(buf, size, &TxQ) != size)
 		return ERROR;
 
 	//start transmitter if it isn't already running
+	//If the transmitter interrupt is not enabled, it sets it to start transmission.
 	if (!(UART0->C2 & UART0_C2_TIE_MASK))
 	{
 		UART0->C2 |= UART0_C2_TIE(1);
@@ -194,10 +198,10 @@ int __sys_write(int handle, char *buf, int size)
  * @param  None
  * @return int 0 on success and -1 on failure
  */
-int __sys_readc(void)
+int __sys_readc(void) //function reads characters from the UART receive buffer, waiting for data as necessary.
 {
 	char ch;
-	while((cbfifo_length(&RxQ)) == 0); //Wait till the receive buffer is empty
+	while((cbfifo_length(&RxQ)) == 0); //Wait till the receive buffer is not empty; It waits until there is data in the receive queue
 
 	if(cbfifo_dequeue(&ch, 1, &RxQ) == 1) //Dequeue the byte
 		return ch; //Return byte
