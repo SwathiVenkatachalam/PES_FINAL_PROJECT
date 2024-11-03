@@ -13,7 +13,7 @@
 
 #include <stdlib.h>
 
-#define Q_MAX_SIZE (256) //Assuming maximum number of nodes don't exceed 256 in fifo
+#define Q_MAX_SIZE (256) //Assuming maximum number 256 in fifo
 
 
 //Structure defined for transmit and receive buffer, need 2 buffers
@@ -21,7 +21,7 @@ typedef struct{
 	int front;
 	int rear;
 	int length; //no of elements in use
-	char qdata[Q_MAX_SIZE];
+	char qdata[Q_MAX_SIZE]; //char array that acts as buffer
 }Q_T;
 
 /*
