@@ -20,7 +20,7 @@
 #define BUFFER_SIZE     (256)
 #define INITIAL_VALUE   (0)
 #define ONE             (1)
-#define EXECUTION_TIMES (2)
+#define EXECUTION_TIMES (2) 
 #define CARRIAGE_RETURN ('\r')
 #define BACKSPACE       ('\b')
 #define NULL_CHAR       ('\0')
@@ -50,6 +50,7 @@ void accumulateString(char *buf, int buf_size)
 		location++;
 		buf[location] = character;          //Stores character for lexical analysis
 
+		//dumb terminal; does what we ask as is. \b back space just goes back, no erasing, implement \b_\b
 		if((buf[location] == BACKSPACE) && (location > INITIAL_VALUE)) //Handle backspace
 		{
 			int i = EXECUTION_TIMES;
