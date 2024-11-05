@@ -16,7 +16,7 @@
 #include "MKL25Z4.h"
 
 #include <stdint.h>
-
+//audio output module utilizing DMA for efficient data transfer to DAC.
 #define DMA_SOURCE_SIZE        (2)
 #define DMA_DESTINATION_SIZE   (2)
 #define PRIORITY               (2)
@@ -47,17 +47,18 @@ void init_DMA0()
 	DMAMUX0->CHCFG[ZERO] = ZERO;
 
 	// Generate DMA interrupt when done
-	DMA0->DMA[ZERO].DCR = DMA_DCR_EINT_MASK                 |
-			           DMA_DCR_SINC_MASK                    |
-				       DMA_DCR_SSIZE(DMA_SOURCE_SIZE)       |
-					   DMA_DCR_DSIZE(DMA_DESTINATION_SIZE)  |
-					   DMA_DCR_ERQ_MASK                     |
-					   DMA_DCR_CS_MASK;
+	// Configure DMA control register (DCR) to set up DMA transfer parameters
+	DMA0->DMA[ZERO].DCR = DMA_DCR_EINT_MASK              | // Enable interrupt on transfer completion
+			DMA_DCR_SINC_MASK                    | // Source address increments after each transfer
+			DMA_DCR_SSIZE(DMA_SOURCE_SIZE)       | // Source data size (2 bytes)
+			DMA_DCR_DSIZE(DMA_DESTINATION_SIZE)  | // Destination data size (2 bytes)
+			DMA_DCR_ERQ_MASK                     | // Enable request for DMA
+			DMA_DCR_CS_MASK; // Circular transfer mode enabled
 
 	// Configure NVIC for DMA ISR
 	NVIC_SetPriority(DMA0_IRQn, PRIORITY);
 	NVIC_ClearPendingIRQ(DMA0_IRQn);
-	NVIC_EnableIRQ(DMA0_IRQn);
+	NVIC_EnableIRQ(DMA0_IRQn); // Enable DMA0 interrupt in NVIC
 
 	// Enable DMA MUX channel with TPM0 overflow as trigger
 	DMAMUX0->CHCFG[ZERO] = DMAMUX_CHCFG_SOURCE(TPM0_OVERFLOW_TRIGG);
@@ -76,9 +77,10 @@ void init_DMA0()
 
 void copy_dma_dacbuffer(buffer *waveform_buffer)
 {
-	uint32_t sample_count = waveform_buffer->sample_count;
+	uint32_t sample_count = waveform_buffer->sample_count; // Get the number of samples from the buffer
 
-	TPM0->SC &= ~TPM_SC_CMOD_MASK; //Stop TPM0
+	TPM0->SC &= ~TPM_SC_CMOD_MASK; //Stop TPM0 to prepare for DMA transfer
+	// Store the start address of the DAC buffer in the DMA source pointer
 	Reload_DMA_Source = &waveform_buffer->dac_buffer[ZERO]; //Store start address
 	Reload_DMA_Byte_Count = sample_count; //Store total number of samples
 	TPM0->SC |= TPM_SC_CMOD(ONE); //Start TPM0
@@ -96,17 +98,18 @@ void copy_dma_dacbuffer(buffer *waveform_buffer)
  */
 void start_dma_transfer()
 {
-	// initialize source and destination pointers
+	// Set the DMA source address register with the buffer's source address
 	DMA0->DMA[ZERO].SAR = DMA_SAR_SAR((uint32_t) Reload_DMA_Source);
+	// Set the DMA destination address register with the DAC data register address
 	DMA0->DMA[ZERO].DAR = DMA_DAR_DAR((uint32_t) (&(DAC0->DAT[ZERO])));
 
-	// byte count
+	// Set the byte count for the DMA transfer; multiplying by BCR_COUNT for total bytes to transfer
 	DMA0->DMA[ZERO].DSR_BCR = DMA_DSR_BCR_BCR(Reload_DMA_Byte_Count * BCR_COUNT);
 
-	// clear done flag
+	// Clear the DMA done flag to reset the status before starting a new transfer
 	DMA0->DMA[ZERO].DSR_BCR &= ~DMA_DSR_BCR_DONE_MASK;
 
-	// set enable flag
+	// Enable the DMA MUX channel to allow the transfer to start
 	DMAMUX0->CHCFG[ZERO] |= DMAMUX_CHCFG_ENBL_MASK;
 }
 
@@ -122,12 +125,12 @@ void start_dma_transfer()
  */
 void DMA0_IRQHandler()
 {
-	// Clear done flag
+	// Clear the DMA done flag to acknowledge that the transfer is complete
 	DMA0->DMA[ZERO].DSR_BCR |= DMA_DSR_BCR_DONE_MASK;
 //
 //	//Check if 1 second has elapsed
 //	if(get_timer() >= ONE_SEC_ELAPSE)
 //		tone_transition_req = ONE;
 //	else
-		start_dma_transfer(); // Start the next DMA transfer
+		start_dma_transfer(); // Start the next DMA transfer to continue sending data to the DAC
 }
