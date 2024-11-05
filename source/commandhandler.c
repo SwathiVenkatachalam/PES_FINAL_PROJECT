@@ -46,7 +46,7 @@ void accumulateString(char *buf, int buf_size)
 	while(buf[location] != CARRIAGE_RETURN) //Accumulate line
 	{
 		char character = getchar();         //Stores character received from user
-		//printf("%c", character);          //Echos character
+		printf("%c", character);          //Echos character
 		location++;
 		buf[location] = character;          //Stores character for lexical analysis
 
