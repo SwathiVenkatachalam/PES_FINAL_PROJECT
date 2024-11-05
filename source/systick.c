@@ -14,6 +14,16 @@
 #include <stdio.h>
 #include "MKL25Z4.h"
 
+// Regardless of MCU device manufacturer, all Cortex-M processors (M0,M0+,M3,M4,andM7) have one. 
+//This helps make system software more portable across diff devices
+
+//Counter in systick timer 24 bits long & dec when clocked
+//Val can be read from VAL register
+//When 1st enables, counter loaded from 24 bit LOAD field, and counts down w each i/p clock pulse
+//After count reached zero, reloads w RELOAD val and can generate exception if enabled
+
+//counter divides i/p freq by a factor of LOAD+1.	
+//In order to divide an	i/p freq(fin) by a factor of N,	we store N-1 in	the LOAD register.
 
 #define SYSTICK_PRIORITY (3)
 #define SYSTICK_LOAD     (187500) //Load value for obtaining 62.5 msec delay
