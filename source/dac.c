@@ -36,6 +36,8 @@ void init_DAC0()
 
     // System Integration Module: System Clock Gating Control Register 5
 	// Field 13: Port E Clock Gate Control - clock enable
+	//This enables the clock for Port E, where the DAC pin is located
+	//Both the DAC and its associated port need their clocks enabled for proper operation.
 	SIM->SCGC5 |= SIM_SCGC5_PORTE_MASK;
 
 	// Pull devices are enabled by writing to PORTx_PCRn[PE] field
